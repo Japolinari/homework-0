@@ -1,0 +1,37 @@
+# A major determinant of Earth's temperature is the greenhouse effect. Many gases trap heat and reflect it towards the surface, preventing heat from escaping the atmosphere. The greenhouse effect is vital in keeping Earth at a warm enough temperature to sustain liquid water and life; however, changes in greenhouse gas levels can alter the temperature balance of the planet.
+# The greenhouse_gases data frame from dslabs contains concentrations of the three most significant greenhouse gases: carbon dioxide (CO2, abbreviated in the data as co2), methane (CH4, ch4 in the data), and nitrous oxide (N2O, n2o in the data). Measurements are provided every 20 years for the past 2000 years.
+# Complete the code outline below to make a line plot of concentration on the y-axis by year on the x-axis. Facet by gas, aligning the plots vertically so as to ease comparisons along the year axis. Add a vertical line with an x-intercept at the year 1850, noting the unofficial start of the industrial revolution and widespread fossil fuel consumption. Note that the units for ch4 and n2o are ppb while the units for co2 are ppm.
+
+greenhouse_gases %>%
+    ggplot(aes(_____year, concentration_____)) +
+    geom_line() +
+    facet_grid(_________gas ~ . _, scales = "free") +
+    __ geom_vline(xintercept=1850)________ +
+    ylab("Concentration (ch4/n2o ppb, co2 ppm)") +
+    ggtitle("Atmospheric greenhouse gas concentration by year, 0-2000")
+
+
+# Interpret the plot of greenhouse gases over time from the previous question. You will use each answer exactly once ch4, co2, n2o, all, none). 
+Which gas was stable at approximately 275 ppm/ppb until around 1850?
+
+greenhouse_gases %>%
+    ggplot(aes(year, concentration)) +
+    geom_line() +
+    facet_grid(gas ~ ., scales = "free") +
+    geom_vline(xintercept = 1850) +
+    xlab("year") +
+    ylab("Concentration (ch4/n2o ppb, co2 ppm)") +
+    ggtitle("Atmospheric greenhouse gas concentration by year, 0-2000")
+
+# While many aspects of climate are independent of human influence, and co2 levels can change without human intervention, climate models cannot reconstruct current conditions without incorporating the effect of manmade carbon emissions. 
+# These emissions consist of greenhouse gases and are mainly the result of burning fossil fuels such as oil, coal and natural gas.
+# Make a time series line plot of carbon emissions (carbon_emissions) from the temp_carbon dataset. The y-axis is metric tons of carbon emitted per year.
+# Which of the following are true about the trend of carbon emissions? 
+
+temp_carbon %>%
+    ggplot(aes(year, carbon_emissions)) +
+    geom_line() +
+    ylab("Carbon emissions (metric tons)") +
+    ggtitle("Annual global carbon emissions, 1751-2014")
+
+
